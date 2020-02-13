@@ -63,20 +63,11 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	
 	m_pOrigin = point;
+	int a = 100;
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
 
-//void CChildView::OnNcLButtonUp(UINT nHitTest, CPoint point)
-//{
-//	// TODO: 在此添加消息处理程序代码和/或调用默认值
-//	CDC* dc = GetDC();
-//	dc->MoveTo(m_pOrigin);
-//	dc->LineTo(point);
-//	ReleaseDC(dc);
-//
-//	CWnd::OnNcLButtonUp(nHitTest, point);
-//}
 
 
 void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
