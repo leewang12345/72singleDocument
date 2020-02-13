@@ -73,11 +73,20 @@ void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
 void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	CDC* dc = GetDC();
+	/*CDC* dc = GetDC();
+	CPen pen(PS_DOT,1,RGB(0,255,0));
+	CPen* oldPen=dc->SelectObject(&pen);
 	dc->MoveTo(m_pOrigin);
 	dc->LineTo(point);
-	ReleaseDC(dc);
+	dc->SelectObject(oldPen);
+	ReleaseDC(dc);*/
 
+	CClientDC  dc(this);
+	CBrush* brush = CBrush::FromHandle((HBRUSH)GetStockObject(NULL_BRUSH));
+	CBrush* oldBrush = dc.SelectObject(brush);
+
+	dc.Rectangle(CRect(m_pOrigin, point));
+	dc.SelectObject(oldBrush);
 
 	CWnd::OnLButtonUp(nFlags, point);
 }
